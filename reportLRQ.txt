@@ -1,0 +1,45 @@
+Git学习report
+Git是一个分布式版本控制系统
+一，首先创建一个版本库
+1.创建空目录
+mkdir    cd   pwd
+2.使用git init使这个目录可以被管理
+3.添加文件
+使用git add；git commit -m<massage>添加文件
+二,
+1.git status 查看命令结果  git diff 查看修改结果
+2.使用 git reset --hard commit_id查看各种版本
+3.使用git log 查看提交历史
+3.git reflog查看命令历史
+4.使用git add 命令将文件存在暂存区，使用git commit将文件提交到分支
+5.git 是跟踪修改的，每次修改后要使用git add放到暂存区
+6.使用git checkout-- file丢弃工作区的修改
+7.使用git reset HEAD <file>将缓存区的修改撤销到工作区，再使用git checkout--file将工作区的修改放弃
+8.使用git rm用于删除宇哥文件，当手动删除后，git rm和git add的效果是一样的，提交到版本库后可以使用git checkout恢复，但是会丢失最后一次提交的内容
+三，
+1.使用git remote add origin git@server-name:path/repo-name.git关联一个远程库
+2.关联远程库的时候要命名，一般默然名字是origin
+3.使用git push -u origin master第一次推送master的所有内容
+4.使用git push origin master推送最新修改
+5.使用git clone克隆一个本地库
+6。使用git创建分支及其方便，使用 git branch查看分支，git branch <name>,切换分支使用checkout或者switch,创建加切换分支checkout -b或者switch -c
+7.合并分支到当前 git merge <>
+8.删除分支git branch -d <>
+9.无法自动合并的时候要手动编辑再提交，git log --graph看分支图
+10。--no-ff用普通模式合并，用fast forward不能看出来
+11.出bug时使用git stash隐藏当前工作，使用git stash pop恢复
+12.使用git cherry-pick <commit>将bug修改直接复制到当前分支
+13.使用git branch -D <>强行删除没有合并的分支
+14.使用 git remote -v查看远程库信息，本地分支想让别人看见需要推送到远程
+15.使用git push origin branch-name从本地推送分支，（用 git pull抓取远程的新提交）
+16.使用git checkout -b branch-name origin/branch-name在本地创建和远程对应的分支
+17.建立本地分支和远程分支的关联，使用git branch --set-upstream branch-name origin/branch-name
+18.rebase操作可以吧本地未push的分叉提交历史整理成直线，使我们在查看历史提交的变化时更容易
+四，
+1.使用git tag <>新建一个标签，可以指定一个id，命令git tag -a <tagname> -m "blablabla..."可以指定标签信息，使用git tag查看所有标签
+2.推送标签git push origin<>,推送全部本地标签git push prigin --tags,删除本地标签 git tag -d <>删除一个远程标签git push origin :refs/tags/<tagname>
+五，
+在Github上，可以任意Fork开源仓库，自己拥有读取权限，可以推送pull request贡献代码
+六，
+1.使用.gitignore忽略某些文件，要放到版本库里，对其进行版本管理
+2.git config --global alias. 缩写+原型   可以用来配置别名或者缩写
