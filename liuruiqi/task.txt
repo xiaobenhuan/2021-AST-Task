@@ -1,0 +1,90 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+typedef struct node {
+    int value;
+    struct node *next;
+}Node;
+void display (Node *head);
+int main ()
+{
+    int numnode;
+    scanf ("%d",&numnode);
+    Node *head,*previous,*current;
+    head = malloc (sizeof(Node));
+    head->value = 10;
+    head->next = NULL;
+    previous = head;
+    int i;
+    for (i=1;i<numnode;i++)
+    {
+        current =malloc (sizeof(Node));
+        current ->value=(i+1)*10;
+        current->next=NULL;
+        previous->next=current;
+        previous=current;
+    }
+    display (head);
+    return 0;
+}
+void display (Node*head)
+{
+    if (head==NULL)
+    {
+        return ;
+    }
+
+    Node *current;
+    int i=1;
+    for (current=head;current!=NULL;current=current->next)
+    {
+        printf ("No.%d:address=%p,value=%4d,next=%p\n",i,current,current->value,current->next);
+        i++;
+    }
+    printf ("\n");
+    return ;
+}
+1.只需要改成current->next=previous，将后面的指向前面的即可逆向输出；
+2.读取结束的条件是：到达一定的长度，输入特殊字符的，感觉是用一个特定的数字比如0来终止；
+
+第一题，有问题，但不知道错哪了
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* twoSum(int* nums, int numsSize, int target, int* returnSize){
+    int a,b,c,d;
+    for (a=0;a<numsSize;a++)
+    {
+        for (b=0;b<numsSize;b++)
+        {
+            if (a!=b)
+            {
+                if ((nums[a]+nums[b])==target)
+                {
+                    c=a;
+                    d=b;
+                    int *rat=malloc (sizeof(int)*2);
+                    rat[0]=c;
+                    rat[1]=b;
+                    return rat;
+                }
+            }
+        }
+    }
+    return NULL;
+}
+
+第二题
+void reverseString(char* s, int sSize){
+    int j;
+    char m;
+    for (j=0;j<(sSize/2);j++)
+    {
+        m=s[j];
+        s[j]=s[sSize-1-j];
+        s[sSize-1-j]=m;
+    }
+    return ; 
+}
+
+。。
